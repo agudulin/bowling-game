@@ -19,4 +19,17 @@ describe('Bowling game', () => {
   it('should not roll more than 10 pins', () => {
     expect(() => game.roll(11)).toThrow(new Error('Can\'t roll more than 10'))
   })
+
+  it('should roll once', () => {
+    game.roll(5)
+
+    expect(game.score()).toEqual(5)
+  })
+
+  it('should roll twice', () => {
+    game.roll(5)
+    game.roll(3)
+
+    expect(game.score()).toEqual(8)
+  })
 })

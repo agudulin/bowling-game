@@ -64,16 +64,14 @@ describe('Bowling game', () => {
   })
 
   it('checks all spares', () => {
-    roll(game)({ times: 20, pins: 5 })
+    roll(game)({ times: 21, pins: 5 })
 
-    console.log(game.frames)
     expect(game.score()).toEqual(150)
   })
 
   it('checks all strikes', () => {
-    roll(game)({ times: 10, pins: 10 })
+    roll(game)({ times: 12, pins: 10 })
 
-    console.log(game.frames)
     expect(game.score()).toEqual(300)
   })
 })

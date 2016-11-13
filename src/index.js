@@ -19,12 +19,12 @@ class Game {
     let total = frameSum(frame)
 
     if (isStrike(frame)) {
-      total += nextFrame[0]
-
-      if (nextFrame.length === 2) {
-        total += nextFrame[1]
-      } else {
-        total += nextNextFrame[0]
+      if (!isStrike(nextFrame)) {
+        total += frameSum(nextFrame)
+      } else if (nextFrame.length === 1) {
+        total += nextFrame[0] + nextNextFrame[0]
+      } else if (nextFrame.length > 1) {
+        total += frameSum(nextFrame.slice(0, 2))
       }
     } else if (isSpare(frame)) {
       total += nextFrame[0]
@@ -34,11 +34,9 @@ class Game {
   }
 
   score () {
-    const self = this
-
-    return this.frames.reduce((prev, curr, idx) => {
-      return prev + self.scoreWithBouns(idx)
-    }, 0)
+    return this.frames.reduce((prev, curr, idx) => (
+      prev + this.scoreWithBouns(idx)
+    ), 0)
   }
 
   roll (pins) {

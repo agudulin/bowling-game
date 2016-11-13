@@ -4,6 +4,12 @@ import Game from './'
 describe('Bowling game', () => {
   let game
 
+  const roll = (game) => ({ times, pins }) => {
+    for (let i = 0; i < times; i++) {
+      game.roll(pins)
+    }
+  }
+
   beforeEach(() => {
     game = new Game()
   })
@@ -47,5 +53,27 @@ describe('Bowling game', () => {
     game.roll(7)
 
     expect(game.score()).toEqual(24)
+  })
+
+  it('checks the strike', () => {
+    game.roll(10)
+    game.roll(5)
+    game.roll(7)
+
+    expect(game.score()).toEqual(22 + 12)
+  })
+
+  it('checks all spares', () => {
+    roll(game)({ times: 20, pins: 5 })
+
+    console.log(game.frames)
+    expect(game.score()).toEqual(150)
+  })
+
+  it('checks all strikes', () => {
+    roll(game)({ times: 10, pins: 10 })
+
+    console.log(game.frames)
+    expect(game.score()).toEqual(300)
   })
 })

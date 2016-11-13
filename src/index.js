@@ -9,7 +9,7 @@ class Game {
     return this.frames[this.frames.length - 1]
   }
 
-  scoreWithBouns (i) {
+  scoreWithBonus (i) {
     const frame = this.frames[i]
     const nextFrame = this.frames[i + 1] || [0]
     const nextNextFrame = this.frames[i + 2] || [0]
@@ -33,7 +33,7 @@ class Game {
 
   score () {
     return this.frames.reduce((prev, curr, idx) => (
-      prev + this.scoreWithBouns(idx)
+      prev + this.scoreWithBonus(idx)
     ), 0)
   }
 

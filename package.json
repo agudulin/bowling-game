@@ -1,22 +1,29 @@
 {
   "name": "bowling-game",
   "version": "0.0.0",
-  "main": "dist/index.js",
+  "main": "lib/cli.js",
   "license": "MIT",
   "devDependencies": {
-    "babel-preset-es2015-rollup": "^1.2.0",
+    "babel": "^6.5.2",
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.18.2",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-stage-0": "^6.16.0",
     "jest": "^17.0.0",
-    "jest-babel": "^1.0.1",
-    "rollup": "^0.36.3",
-    "rollup-plugin-babel": "^2.6.1"
+    "jest-babel": "^1.0.1"
   },
   "scripts": {
-    "transpile": "rollup --config",
-    "test": "jest"
+    "start": "npm run transpile && node ./lib/cli --random",
+    "transpile": "babel --stage 0 ./src -d ./lib",
+    "test": "npm run transpile && jest --verbose lib/*.spec.js"
   },
   "babel": {
     "presets": [
-      "es2015-rollup"
+      "es2015",
+      "stage-0"
     ]
+  },
+  "dependencies": {
+    "meow": "^3.7.0"
   }
 }

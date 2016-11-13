@@ -46,7 +46,7 @@ class Game {
 
     this.lastFrame().push(pins)
 
-    if (this.frames.length !== 10 && (this.lastFrame().length === 2 || pins === 10)) {
+    if (this.frames.length < 10 && (this.lastFrame().length === 2 || pins === 10)) {
       this.frames.push([])
     }
   }

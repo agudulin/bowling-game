@@ -1,6 +1,4 @@
-const frameSum = (frame) => frame.reduce((prev, cur) => prev + cur, 0)
-const isStrike = (frame) => frame[0] === 10
-const isSpare = (frame) => frame[0] + frame[1] === 10
+import { frameSum, isStrike, isSpare } from './frameHelper'
 
 class Game {
   constructor () {

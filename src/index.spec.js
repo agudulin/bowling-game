@@ -32,4 +32,20 @@ describe('Bowling game', () => {
 
     expect(game.score()).toEqual(8)
   })
+
+  it('checks that spare has no bonus', () => {
+    game.roll(5)
+    game.roll(5)
+    game.roll(0)
+
+    expect(game.score()).toEqual(10)
+  })
+
+  it('checks that spare has a bonus', () => {
+    game.roll(5)
+    game.roll(5)
+    game.roll(7)
+
+    expect(game.score()).toEqual(24)
+  })
 })
